@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Mumma Papa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            font-family: 'Georgia', serif;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3.5em;
+            color: #8b7355;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .gallery {
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .photo-card {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            background: linear-gradient(135deg, #e8d5c4 0%, #d4c4b0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b7355;
+            font-size: 1.2em;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: '📷';
+            font-size: 3em;
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .photo-placeholder span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Varying heights for Pinterest-style layout */
+        .photo-card:nth-child(1) .photo-placeholder { padding: 100px 20px; }
+        .photo-card:nth-child(2) .photo-placeholder { padding: 70px 20px; }
+        .photo-card:nth-child(3) .photo-placeholder { padding: 90px 20px; }
+        .photo-card:nth-child(4) .photo-placeholder { padding: 110px 20px; }
+        .photo-card:nth-child(5) .photo-placeholder { padding: 80px 20px; }
+        .photo-card:nth-child(6) .photo-placeholder { padding: 95px 20px; }
+        .photo-card:nth-child(7) .photo-placeholder { padding: 85px 20px; }
+        .photo-card:nth-child(8) .photo-placeholder { padding: 100px 20px; }
+        .photo-card:nth-child(9) .photo-placeholder { padding: 75px 20px; }
+        .photo-card:nth-child(10) .photo-placeholder { padding: 90px 20px; }
+
+        .caption {
+            padding: 15px 20px;
+            background: #fff;
+            color: #5a5a5a;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 900px) {
+            .gallery {
+                columns: 2;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                columns: 1;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        /* Decorative elements */
+        .header-decoration {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heart {
+            display: inline-block;
+            color: #d4a59a;
+            font-size: 2em;
+            margin: 0 10px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-decoration">
+            <span class="heart">♥</span>
+            <span class="heart">♥</span>
+            <span class="heart">♥</span>
+        </div>
+        
+        <h1>Happy Anniversary Mumma Papa</h1>
+        
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <script>
+        // Configuration: Add your image filenames and captions here
+        const photos = [
+            { src: 'images/photo1.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo2.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo3.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo4.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo5.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo6.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo7.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo8.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo9.jpg', caption: 'Add your special memory here' },
+            { src: 'images/photo10.jpg', caption: 'Add your special memory here' }
+        ];
+
+        // Automatically generate gallery
+        const gallery = document.getElementById('gallery');
+        
+        photos.forEach((photo, index) => {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            
+            card.innerHTML = `
+                <img src="${photo.src}" alt="Photo ${index + 1}" style="width: 100%; display: block;">
+                <div class="caption">${photo.caption}</div>
+            `;
+            
+            gallery.appendChild(card);
+        });
+    </script>
+    </div>
+</body>
+</html>
