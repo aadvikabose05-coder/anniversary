@@ -172,11 +172,28 @@
             const card = document.createElement('div');
             card.className = 'photo-card';
             
-            card.innerHTML = `
-                <img src="${photo.src}" alt="Photo ${index + 1}" style="width: 100%; display: block;">
-                <div class="caption">${photo.caption}</div>
-            `;
+            const img = document.createElement('img');
+            img.src = photo.src;
+            img.alt = `Photo ${index + 1}`;
+            img.style.width = '100%';
+            img.style.display = 'block';
             
+            // Error handling for images
+            img.onerror = function() {
+                console.error(`Failed to load: ${photo.src}`);
+                this.style.display = 'none';
+                const placeholder = document.createElement('div');
+                placeholder.className = 'photo-placeholder';
+                placeholder.innerHTML = `<span>Image not found: ${photo.src}</span>`;
+                card.insertBefore(placeholder, card.firstChild);
+            };
+            
+            const caption = document.createElement('div');
+            caption.className = 'caption';
+            caption.textContent = photo.caption;
+            
+            card.appendChild(img);
+            card.appendChild(caption);
             gallery.appendChild(card);
         });
     </script>
